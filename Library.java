@@ -127,7 +127,8 @@ public class Library {
 		// some users check out and return books
 		lib.checkout("Donald Duck", "March 1, 2012", "QA43.W34");
 		lib.checkout("Donald Duck", "March 12, 2012", "QA76.6.W3275");
-        lib.checkout("Donald Duck", "March 12, 2012", "QA76.6.W3275"); //checked out book second time
+        lib.checkout("Donald Duck", "March 12, 2012", "QA76.6.W3275");
+        //checked out book second time and said "Book already checked out"
 		lib.checkout("Donald Duck", "March 6, 2012", "64.2 R25ex");
 		lib.checkout("Minnie Mouse", "April 1, 2012", "64.2 25e");
 		lib.checkout("Goofy", "February 28, 2012", "12345"); // should fail
@@ -140,5 +141,17 @@ public class Library {
 		
 		// print final status of library
 		lib.printLibrary();		
+		
+		System.out.println("Check circulationStatus method");
+		
+		System.out.println("Circulating Book: " + lib.findBook(new CirculatingBook ("Henry M. Walker",
+                "The Tao of Computing",
+                "0-86720-206-8", "QA76.W1855")).circulationStatus());
+		System.out.println("Reference Book: " + lib.findBook(new ReferenceBook ("Henry M. Walker", 
+                    "Problems for Computer Solution using BASIC",
+                    "0-87626-717-7", "QA76.73.B3W335", "Iowa Room")).circulationStatus());
+		System.out.println("Checked-out Circulation Book: " + lib.findBook(new CirculatingBook ("Henry M. Walker", 
+                "Problems for Computer Solution using FORTRAN",
+                "0-87626-654-5", "QA43.W34")).circulationStatus());
 	}
 }
